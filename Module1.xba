@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="Module1" script:language="StarBasic" script:moduleType="normal">REM  *****  BASIC  *****
+
+Option Explicit
+Private oDlgMain as Variant
+
+Sub Main
+    BasicLibraries.LoadLibrary(&quot;LogicxLibrary&quot;)
+    oDlgMain = LoadDialog(&quot;LogicxLibrary&quot;, &quot;MainUi&quot;)
+    oDlgMain.Execute()
+End Sub
+Function MakeShape(sShapeCode as String)
+
+	print sShapeCode
+	MakeShape =0
+	Exit Function
+End Function
+Sub GenerateImage
+	Dim sShapeCode as string
+	sShapeCode = oDlgMain.getControl(&quot;shapeCodeTectBox&quot;).getText()
+	print sShapeCode
+	Dim ret as Integer
+	ret = MakeShape()
+	If ret = 0 Then
+		oDlgMain.endExecute(sShapeCode)
+	End If
+End Sub
+</script:module>
